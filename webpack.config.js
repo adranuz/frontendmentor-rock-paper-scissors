@@ -22,6 +22,17 @@ module.exports = {
         test: /\.css$/, //archivos que usan el loader
         use: ["style-loader", "css-loader"] //loaders que se usa, importante este orden
       },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]',
+            },
+          },
+        ],
+      },
     ]
   },
 }
