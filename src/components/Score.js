@@ -6,7 +6,7 @@ const ScoreStyled = styled.div`
    text-align: center;
    padding: 10px 0;
    border-radius: 6px;
-   width: 5em;
+   width: 80px;
    small {
      color: #2a45c2;
      text-transform: uppercase;

@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { GlobalStyle } from './GlobalStyle'
 import Header from './components/Header'
 import Wrapper from './components/Wrapper'
-import { GlobalStyle } from './GlobalStyle'
+import Table from './components/Table'
 
 const AppStyled = styled.main`
   background: #111f43;
@@ -16,6 +17,7 @@ function App() {
       <GlobalStyle />
       <Wrapper>
         <Header />
+        <Table />
       </Wrapper>
     </AppStyled>
   )
