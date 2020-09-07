@@ -27,6 +27,8 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 500px;
     overscroll-behavior: none;
     width: 100%;
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+    font-family: 'Barlow Semi Condensed', sans-serif;
   }
   #app {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
