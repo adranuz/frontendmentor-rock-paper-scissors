@@ -15,7 +15,7 @@ const TableStyled = styled.div`
   background-image: url("${triangle}");
   background-repeat: no-repeat;
   background-position: center 95px;
-  background-size: 50%;
+  background-size: 220px 200px;
 
   & div:nth-of-type(3) {
     grid-column: span 2;
