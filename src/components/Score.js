@@ -22,11 +22,11 @@ const ScoreStyled = styled.div`
    }
 `
 
-function Score() {
+function Score({value = 0}) {
   return (
     <ScoreStyled>
       <small>Score</small> 
-      <p>12</p>
+      <p>{value}</p>
     </ScoreStyled>
   )
 }

@@ -13,14 +13,14 @@ const TokenStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items:center;
-  background: white;
   box-shadow: 0 5px 2px ${({color}) => color.border};
   cursor: pointer;
   &:active {
     transform: scale(.9);
   }
   .box {
-    box-shadow: inset 0px 8px 4px 1px rgb(184 186 226);
+    background: ${({ color }) => (color.icon == 'default') ? '#122343' : 'white'};
+    box-shadow: ${({ color }) => (color.icon == 'default') ? 'transparent' : 'inset 0px 8px 4px 1px rgb(184 186 226)'};
     flex: 1;
     border: none;
     align-self: stretch;
@@ -46,15 +46,27 @@ const colors = {
     icon: scissors,
     border: 'hsl(39, 89%, 49%)',
     base: 'hsl(40, 84%, 53%)',
+  },
+  default: {
+    icon: 'default',
+    border: 'transparent',
+    base: 'transparent',
   }
+
 }
 
-function Token({name}) {
-  
+function Token({ name = '', onClick }) {
+  function handleClick() {
+    onClick(name)
+  }
   return (
-    <TokenStyled color={colors[name]}>
+    <TokenStyled color={colors[name]} onClick={handleClick} >
       <div className="box">
-        <img src={colors[name].icon} alt={name} />
+        {
+          (name !== 'default') && (
+            <img src={colors[name].icon} alt={name} />
+          )
+        }
       </div>
     </TokenStyled>
   )

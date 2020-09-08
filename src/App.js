@@ -20,6 +20,7 @@ const AppStyled = styled.main`
     justify-content: space-between;
   }
 `
+
 function App() {
   return (
     <AppStyled>
