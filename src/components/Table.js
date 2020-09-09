@@ -1,8 +1,9 @@
-import React, { useState }  from "react";
+import React, { useState, useContext }  from "react";
 import styled from 'styled-components'
 import Token from './Token'
 import triangle from '../images/bg-triangle.svg'
 import { WhiteButton } from './Button'
+import { ScoreContext } from '../App'
 
 
 const TableStyled = styled.div`
@@ -30,6 +31,7 @@ const TableStyled = styled.div`
   .results-container {
     width: 100%;
     position: relative;
+    height:90px;
   }
   .results {
     position: absolute;
@@ -56,25 +58,35 @@ function Table() {
   const [pick, setPick] = useState('')
   const [housePick, setHousePick] = useState('default')
   const [user, setUser] = useState('')
+  const {score, setScore} = useContext(ScoreContext)
+  //const scoreHere = score
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min
   }
   function launchHousePick() {
     const hp = elements[getRandomInt(0,3)]
-    console.log(hp)
-    setTimeout(() => {
       setHousePick(hp)
-    }, 1000)
     return hp
   }
   function onClick(name) {
     setPlaying(true) //comienza el juego
     setPick(name) //set our pick
+    setTimeout(() => {
 
-    const hp = launchHousePick() //house 
-    setUser(whoWon(name, hp))
-    console.log(name, 'vs', hp)
+      const hp = launchHousePick() //house 
+      const result = whoWon(name, hp)
+      setUser(result)
+      console.log(result)
+      settingScore(result)
+    }, 1000)
+
+    //setScore(scoreHere)
+    //console.log(results)
+  }
+  function settingScore(result) {
+    (result === 'win') && setScore( score + 1 )
+    (result === 'lose') && setScore(0)
   }
   function whoWon(pick, housePick) {
     console.log(pick, housePick)
@@ -102,11 +114,11 @@ function Table() {
         (
           <>
             <div className="in-game">
-              <Token name={pick} onClick=""/>
+              <Token name={pick} />
               <p>You Picked</p>
             </div>
-            <div className="in-game" onClick="">
-              <Token name={housePick}/>
+            <div className="in-game" >
+              <Token name={housePick} />
               <p>The house picked</p>
             </div>
             <div className="results-container">

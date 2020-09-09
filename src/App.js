@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from './GlobalStyle'
 import Header from './components/Header'
@@ -20,19 +20,22 @@ const AppStyled = styled.main`
     justify-content: space-between;
   }
 `
-
+export const ScoreContext = createContext(null)
 function App() {
+  const [score, setScore] = useState(0)
   return (
-    <AppStyled>
-      <GlobalStyle />
-      <Wrapper>
-        <div className="app-content">
-          <Header />
-          <Table />
-          <Rules />
-        </div>
-      </Wrapper>
-    </AppStyled>
+    <ScoreContext.Provider value={{score, setScore}}>
+      <AppStyled>
+        <GlobalStyle />
+        <Wrapper>
+          <div className="app-content">
+            <Header />
+            <Table />
+            <Rules />
+          </div>
+        </Wrapper>
+      </AppStyled>
+    </ScoreContext.Provider>
   )
 }
 
