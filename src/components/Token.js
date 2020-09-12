@@ -43,7 +43,6 @@ const TokenStyled = styled.div`
   }
 `
 
-
 const colors = {
   paper: {
     icon: paper,
