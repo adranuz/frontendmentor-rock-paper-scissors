@@ -13,7 +13,8 @@ const TableStyled = styled.div`
   justify-items: center;
   gap: 30px 60px;
   padding: 2em 0;
-  /*background-image: url("{triangle}");*/
+  /*{({})} solo se trata de props y sus valores, mandadas en los tags */
+  ${({state}) => (state) ? `background-image: none;` : `background-image: url("${triangle}");`};
   background-repeat: no-repeat;
   background-position: center 95px;
   background-size: 220px 200px;
@@ -54,13 +55,13 @@ const elements = [
 ]
 
 function Table() {
+  //los hooks no se pueden usar en styled components
   const [playing, setPlaying] = useState(false)
-  const [pick, setPick] = useState('')
-  const [housePick, setHousePick] = useState('default')
-  const [user, setUser] = useState('')
+  const [pick, setPick] = useState('') //'scissors', 'rock', 'paper'
+  const [housePick, setHousePick] = useState('default') //'scissors', 'rock', 'paper', 'default'
+  const [user, setUser] = useState('') //'win', 'draw' or 'lose'
   const {score, setScore} = useContext(ScoreContext)
-  //const scoreHere = score
-
+  const [bgImage, setBgImage] = useState(false)
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min
   }
@@ -80,9 +81,6 @@ function Table() {
       console.log(result)
       settingScore(result)
     }, 1000)
-
-    //setScore(scoreHere)
-    //console.log(results)
   }
   function settingScore(result) {
     if(result === 'win') setScore( score + 1 )
@@ -97,12 +95,13 @@ function Table() {
     else {return 'lose'};
   } 
   function newChance() {
+    setUser('')
     setHousePick('default')
     setPlaying(false)
   }
   
   return (
-    <TableStyled>
+    <TableStyled state={playing}>
       {
         !playing ? (
           <>
@@ -114,11 +113,11 @@ function Table() {
         (
           <>
             <div className="in-game">
-              <Token name={pick} isShadowAnimated />
+              <Token name={pick} isShadowAnimated={(user === "win")} />
               <p>You Picked</p>
             </div>
             <div className="in-game" >
-              <Token name={housePick} />
+              <Token name={housePick} isShadowAnimated={(user === "lose")} />
               <p>The house picked</p>
             </div>
             <div className="results-container">

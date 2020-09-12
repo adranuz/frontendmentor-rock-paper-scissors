@@ -1,9 +1,18 @@
 import React  from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import paper from '../images/icon-paper.svg'
 import scissors from '../images/icon-scissors.svg'
 import rock from '../images/icon-rock.svg'
 
+const shadow = keyframes`
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 0 25px rgba(255,255,255,.02), 0 0 0 50px rgba(255,255,255,.02), 0 0 0 75px rgba(255,255,255,.02), 0 0 0 100px rgba(255,255,255,.02);
+    transform: rotateZ(370deg) scale(1.1)
+  }
+`;
 
 const TokenStyled = styled.div`
   height: 130px;
@@ -14,8 +23,10 @@ const TokenStyled = styled.div`
   justify-content: center;
   align-items:center;
   box-shadow: 0 5px 2px ${({color}) => color.border};
+  
   cursor: pointer;
-  ${({ isShadowAnimated }) => isShadowAnimated && 'box-shadow: 0 0 0 25px rgba(255,255,255,.02), 0 0 0 50px rgba(255,255,255,.02), 0 0 0 75px rgba(255,255,255,.02), 0 0 0 100px rgba(255,255,255,.02);'}
+  ${({ isShadowAnimated }) => isShadowAnimated && 'box-shadow: 0 0 0 25px rgba(255,255,255,.02), 0 0 0 50px rgba(255,255,255,.02), 0 0 0 75px rgba(255,255,255,.02), 0 0 0 100px rgba(255,255,255,.02);'};
+  animation: 1.5s ${({ isShadowAnimated }) => isShadowAnimated ? shadow : ''} linear infinite alternate;
   &:active {
     transform: scale(.9);
   }
