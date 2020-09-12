@@ -5,7 +5,6 @@ import triangle from '../images/bg-triangle.svg'
 import { WhiteButton } from './Button'
 import { ScoreContext } from '../App'
 
-
 const TableStyled = styled.div`
   display: grid;
   grid-template-columns: 130px 130px;
@@ -45,6 +44,11 @@ const TableStyled = styled.div`
       margin-top: -10px;
       text-transform: uppercase;
     }
+  }
+  @media screen and (min-width: 768px) {
+    gap: 30px 160px;
+    background-position: center 120px;
+    background-size: 330px 300px;
   }
 `
 

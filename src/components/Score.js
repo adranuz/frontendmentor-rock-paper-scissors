@@ -14,13 +14,19 @@ const ScoreStyled = styled.div`
      font-size: 10px;
      font-weight: bold;
      letter-spacing: 1px;
-   }
-   p {
+  }
+  p {
      color: #565468;
      font-size: 30px;
      margin: 0;
      font-weight: 700;
-   }
+  }
+  @media screen and (min-width: 768px) {
+    width: 90px;
+    p {
+      font-size: 40px;
+    }
+  }
 `
 
 function Score() {

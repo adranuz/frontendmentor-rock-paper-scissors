@@ -41,6 +41,12 @@ const TokenStyled = styled.div`
     justify-content: center;
     align-items:center;
   }
+  @media screen and (min-width: 768px) {
+    width: 200px;
+    height: 200px;
+    border: 26px solid ${({color}) => color.base};
+
+  }
 `
 
 const colors = {

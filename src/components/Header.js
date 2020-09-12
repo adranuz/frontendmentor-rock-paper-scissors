@@ -16,6 +16,12 @@ const HeaderStyled = styled.div`
     font-weight: 700;
     line-height: 16px;
   }
+  @media screen and (min-width: 768px) {
+    h1 {
+      font-size: 30px;
+      line-height: 24px;
+    }
+  }
 `
 
 function Header() {

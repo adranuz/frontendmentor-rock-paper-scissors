@@ -30,6 +30,47 @@ const RulesStyled = styled.div`
   .icon-close {
     cursor: pointer;
   }
+  @media screen and (min-width: 768px) {
+    ::before {
+      content: '';
+      display: ${({visible}) => visible ? 'block' : 'none'};
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background: rgba(0,0,0,.6);
+      z-index:1;
+    }
+    .button {
+      position: fixed;
+      right: 2em;
+      bottom: 2em;
+      z-index: 0;
+    }
+    .rules-overlay {
+      width: 400px;
+      margin: auto;
+      max-height: 500px;
+      padding: 3em;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px 0 grey;
+      justify-content: space-between;
+      z-index:1;
+    }
+    .icon-close {
+      position: absolute;
+      top: 3.1em;
+      right: 2.6em;
+    }
+    h2 {
+      align-self: flex-start;
+      margin-left: -10px;
+    }
+    .rules {
+      margin-bottom: 1.5em;
+    }
+  }
 `
 
 function Rules() {
@@ -41,17 +82,17 @@ function Rules() {
     setVisible(false)
   }
   return (
-    <RulesStyled>
+    <RulesStyled visible={visible}>
       {
         (visible) && (
           <div className="rules-overlay">
             <h2>Rules</h2>
-            <img src={rulesImg} alt="game rules" />
+            <img className="rules" src={rulesImg} alt="game rules" />
             <img className="icon-close" src={iconClose} onClick={closeRules}/>
           </div>
         )
       }
-      <Button onClick={openRules}/>
+      <Button className="button" onClick={openRules}/>
     </RulesStyled>
   )
 }

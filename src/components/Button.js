@@ -1,6 +1,7 @@
 import React  from "react";
 import styled from 'styled-components'
 
+
 const ButtonStyled = styled.div`
   display: inline-flex;
   border: 1px solid white;
@@ -12,7 +13,13 @@ const ButtonStyled = styled.div`
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-`
+  :hover {
+    background: white;
+    color: #171E40;
+    font-weight: bold;
+    margin: 0;
+  }
+  `
 
 export const WhiteButton = styled(ButtonStyled)`
   background: white;
