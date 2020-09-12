@@ -15,6 +15,7 @@ const TokenStyled = styled.div`
   align-items:center;
   box-shadow: 0 5px 2px ${({color}) => color.border};
   cursor: pointer;
+  ${({ isShadowAnimated }) => isShadowAnimated && 'box-shadow: 0 0 0 25px rgba(255,255,255,.02), 0 0 0 50px rgba(255,255,255,.02), 0 0 0 75px rgba(255,255,255,.02), 0 0 0 100px rgba(255,255,255,.02);'}
   &:active {
     transform: scale(.9);
   }
@@ -30,6 +31,7 @@ const TokenStyled = styled.div`
     align-items:center;
   }
 `
+
 
 const colors = {
   paper: {
@@ -55,12 +57,12 @@ const colors = {
 
 }
 
-function Token({ name = '', onClick }) {
+function Token({ name = '', onClick, isShadowAnimated }) {
   function handleClick() {
     onClick && onClick(name)
   }
   return (
-    <TokenStyled color={colors[name]} onClick={handleClick} >
+    <TokenStyled color={colors[name]} onClick={handleClick} isShadowAnimated={isShadowAnimated} >
       <div className="box">
         {
           (name !== 'default') && (

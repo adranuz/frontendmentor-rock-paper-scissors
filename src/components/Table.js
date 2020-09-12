@@ -85,8 +85,8 @@ function Table() {
     //console.log(results)
   }
   function settingScore(result) {
-    (result === 'win') && setScore( score + 1 )
-    (result === 'lose') && setScore(0)
+    if(result === 'win') setScore( score + 1 )
+    else if(result === 'lose') setScore(0)
   }
   function whoWon(pick, housePick) {
     console.log(pick, housePick)
@@ -114,7 +114,7 @@ function Table() {
         (
           <>
             <div className="in-game">
-              <Token name={pick} />
+              <Token name={pick} isShadowAnimated />
               <p>You Picked</p>
             </div>
             <div className="in-game" >
