@@ -10,9 +10,16 @@ const shadow = keyframes`
   }
   to {
     box-shadow: 0 0 0 25px rgba(255,255,255,.02), 0 0 0 50px rgba(255,255,255,.02), 0 0 0 75px rgba(255,255,255,.02), 0 0 0 100px rgba(255,255,255,.02);
-    transform: rotateZ(370deg) scale(1.1)
   }
 `;
+const animationIcon = keyframes`
+  from {  
+    transform: rotateZ(1deg) 
+  }
+  to {
+    transform: rotateZ(370deg) 
+  }
+`
 
 const TokenStyled = styled.div`
   height: 130px;
@@ -40,6 +47,9 @@ const TokenStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items:center;
+    img {
+      animation: 1.5s ${({ isShadowAnimated }) => isShadowAnimated ? animationIcon : ''} linear infinite forwards;
+    }
   }
   @media screen and (min-width: 768px) {
     width: 200px;

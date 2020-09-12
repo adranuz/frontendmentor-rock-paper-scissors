@@ -12,12 +12,10 @@ const TableStyled = styled.div`
   justify-items: center;
   gap: 30px 60px;
   padding: 2em 0;
-  /*{({})} solo se trata de props y sus valores, mandadas en los tags */
-  ${({state}) => (state) ? `background-image: none;` : `background-image: url("${triangle}");`};
+  ${({state}) => (state) ? `background-image: none;` : `background-image: url("${triangle}");`}
   background-repeat: no-repeat;
   background-position: center 95px;
   background-size: 220px 200px;
-
   & div:nth-of-type(3) {
     grid-column: span 2;
   }
@@ -49,6 +47,35 @@ const TableStyled = styled.div`
     gap: 30px 160px;
     background-position: center 120px;
     background-size: 330px 300px;
+    ${({state}) => (state != '') && 'grid-template-columns: 130px auto 130px;'} 
+    ${({state}) => (state != '') && 'grid-template-areas: "op1 res op2";'} 
+    ${({state}) => (state != '') && 'div:nth-of-type(3) {grid-column: initial;}'} 
+    ${({state}) => (state != '') && 'margin: 0;'} 
+    .in-game {
+      display: flex;
+      font-weight: bold;
+      flex-direction: column-reverse;
+      grid-area: op1;
+      p {
+        margin-bottom: 2em;
+      }
+      &:nth-of-type(2) {
+      grid-area: op2;
+      }
+    }
+    .results-container {
+      width: 230px;
+      height: 100%;
+      grid-area: res;
+    } 
+    .results {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    } 
   }
 `
 
@@ -63,7 +90,7 @@ function Table() {
   const [playing, setPlaying] = useState(false)
   const [pick, setPick] = useState('') //'scissors', 'rock', 'paper'
   const [housePick, setHousePick] = useState('default') //'scissors', 'rock', 'paper', 'default'
-  const [user, setUser] = useState('') //'win', 'draw' or 'lose'
+  const [user, setUser] = useState('') //'win', 'draw', 'lose', ''
   const {score, setScore} = useContext(ScoreContext)
   const [bgImage, setBgImage] = useState(false)
   function getRandomInt(min, max) {
@@ -126,7 +153,7 @@ function Table() {
             </div>
             <div className="results-container">
               {
-                housePick != 'default' && (
+                housePick !== 'default' && (
                   <div className="results">
                     <h3>YOU {user}</h3>
                     <WhiteButton onClick={newChance}>
