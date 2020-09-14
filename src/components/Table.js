@@ -137,9 +137,9 @@ function Table() {
       {
         !playing ? (
           <>
-            <Token name='paper' onClick={onClick} />
-            <Token name='scissors' onClick={onClick} />
-            <Token name='rock' onClick={onClick} />
+            <Token name='paper' olo={onClick} />
+            <Token name='scissors' olo={onClick} />
+            <Token name='rock' olo={onClick} />
           </>
         ) :
         (

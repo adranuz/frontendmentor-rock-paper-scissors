@@ -83,9 +83,9 @@ const colors = {
 
 }
 
-function Token({ name = '', onClick, isShadowAnimated }) {
+function Token({ name = '', olo, isShadowAnimated }) {
   function handleClick() {
-    onClick && onClick(name)
+    olo && olo(name)
   }
   return (
     <TokenStyled color={colors[name]} onClick={handleClick} isShadowAnimated={isShadowAnimated} >
