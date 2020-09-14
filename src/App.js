@@ -12,6 +12,7 @@ const AppStyled = styled.main`
   margin: 0;
   .app-content {
     padding: 2em;
+    padding-bottom: 0;
     min-height: 100vh;
     display: flex;
     box-sizing: border-box;

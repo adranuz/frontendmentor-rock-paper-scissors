@@ -50,7 +50,7 @@ const TableStyled = styled.div`
     ${({state}) => (state != '') && 'grid-template-columns: 130px auto 130px;'} 
     ${({state}) => (state != '') && 'grid-template-areas: "op1 res op2";'} 
     ${({state}) => (state != '') && 'div:nth-of-type(3) {grid-column: initial;}'} 
-    ${({state}) => (state != '') && 'margin: 0;'} 
+    ${({state}) => (state != '') && 'gap: 35px;'} 
     .in-game {
       display: flex;
       font-weight: bold;
@@ -67,6 +67,7 @@ const TableStyled = styled.div`
       width: 230px;
       height: 100%;
       grid-area: res;
+      padding-top: 20px;
     } 
     .results {
       width: 100%;
