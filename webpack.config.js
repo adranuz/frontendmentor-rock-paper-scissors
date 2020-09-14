@@ -1,26 +1,20 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require('path')
 module.exports = {
+  entry: './src/index.js',
   output: {filename: 'app.bundle.js'},
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    })
-  ],
   module: {
     rules: [
       {
-        test: /\.m?js$/, //todos los archivos js seran leidos por el babel-loader
-        exclude: /(node_modules|bower_components)/, //exepto estas carpetas
+        test: /\.js$/, //todos los archivos js seran leidos por el babel-loader
+        exclude: /node_modules/, //exepto estas carpetas
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'] //add interpreters
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['babel-plugin-styled-components', '@babel/plugin-syntax-dynamic-import']
           }
         }
-      },
-      {
-        test: /\.css$/, //archivos que usan el loader
-        use: ["style-loader", "css-loader"] //loaders que se usa, importante este orden
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
@@ -35,4 +29,9 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'public/index.html'
+    }),
+  ],
 }
