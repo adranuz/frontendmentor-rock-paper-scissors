@@ -7,7 +7,6 @@ import Table from './components/Table'
 import Rules from './components/Rules'
 
 const AppStyled = styled.main`
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
   font-family: 'Barlow Semi Condensed', Arial;
   background-image: radial-gradient(circle at top, hsl(214, 47%, 23%) 30%, hsl(237, 49%, 15%) 90%);
   margin: 0;
