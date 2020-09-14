@@ -24,14 +24,16 @@ export const GlobalStyle = createGlobalStyle`
     background: #fefefe;
     height: 100vh;
     margin: 0 auto;
-    max-width: 500px;
     overscroll-behavior: none;
     width: 100%;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: white;
+  }
+  img {
   }
   #app {
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     overflow-x: hidden;
     min-height: 100vh;
-    padding-bottom: 10px;
   }
 `
