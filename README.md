@@ -1,5 +1,7 @@
 # Frontend Mentor - Rock, Paper, Scissors
 
+[Game Link](https://frontendmentor-rock-paper-scissors-6qv2l4evh.vercel.app/)
+
 ![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
